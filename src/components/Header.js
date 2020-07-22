@@ -4,29 +4,27 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
 import List from '@material-ui/core/List';
-
 import Divider from '@material-ui/core/Divider';
-
-
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import Button from '@material-ui/core/Button'
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
+import BookIcon from '@material-ui/icons/Book';
+import ShareIcon from '@material-ui/icons/Share';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+
 
 const drawerWidth = 240;
 
@@ -45,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
     background: '#12c2e9',
     background: '-webkit-linear-gradient(to right, #12c2e9, #c471ed, #f64f59)',
     background: 'linear-gradient(to right, #12c2e9, #c471ed, #f64f59)'
-
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -77,10 +74,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+    display: 'flex',
   },
   sectionDesktop: {
     display: 'none',
@@ -94,10 +88,14 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-
+  navButton: {
+    textDecoration: 'none',
+    color: theme.palette.text.primary
+  }
 }));
 
 function Header() {
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -114,10 +112,6 @@ function Header() {
 
   const handleDrawerClose = () => {
     setOpen(false);
-  };
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
   };
 
   const handleMobileMenuClose = () => {
@@ -161,31 +155,10 @@ function Header() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
+        Contact
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
+        Share
       </MenuItem>
     </Menu>
   );
@@ -215,26 +188,22 @@ function Header() {
         
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+
+            <Button 
+              color="inherit"
+              className={classes.menuButton}>
+              Contact
+            </Button>
             <IconButton
-              edge="end"
               aria-label="account of current user"
-              aria-controls={menuId}
+              aria-controls="primary-search-account-menu"
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <ShareIcon/>
             </IconButton>
+
+          
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -265,21 +234,36 @@ function Header() {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          <ListItem button>
+            <ListItemIcon>
+              <PersonPinIcon/>
+            </ListItemIcon>
+            <ListItemText primary="About Me" />
             </ListItem>
-          ))}
+
+            <ListItem button>
+            <ListItemIcon>
+              <LibraryBooksIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Resume" />
+            </ListItem>
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          <ListItem button>
+            <ListItemIcon>
+              <AccountTreeIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Projects" />
+          </ListItem>
+
+          <ListItem button>
+              <ListItemIcon>
+                <BookIcon/>
+              </ListItemIcon>
+              <ListItemText primary="Blog" />
             </ListItem>
-          ))}
+
         </List>
       </Drawer>
       {renderMobileMenu}
