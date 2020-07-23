@@ -3,13 +3,21 @@ import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
+import faceImage from '../ning.jpg'
+import List from '@material-ui/core/List';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import { Button } from '@material-ui/core'
+import GitHubIcon from '@material-ui/icons/GitHub';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import Divider from '@material-ui/core/Divider';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    background: '#c9d6ff',
-    background: '-webkit-linear-gradient(to right, #c9d6ff, #e2e2e2)',
-    background: 'linear-gradient(to right, #c9d6ff, #e2e2e2)'
+    // background: '#fffcdc'
+    backgroundColor: '#FFFFFF'
   },
   paper: {
     padding: theme.spacing(2),
@@ -20,29 +28,60 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   paperBackground:{
-    background: '#c9d6ff',
-  }
+    background: '#fffcdc',
+    fontFamily: 'cursive;'
+  },
+  image: {
+    hight: '20%',
+    width: '20%'
+  },
+  name: {
+    fontFamily: 'cursive',
+    fontSize: '30px'
+  },
+  skill: {
+    fontFamily: 'Rowdies',
+  },
 }));
 
 function Main() {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      <Box pt="20%" className={classes.center}>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <h1>Ning Chen</h1>
+      <Box pt="15%" pl="6%" pr="6%" className={classes.center}>
+        <Paper elevation={0} className={classes.paperBackground}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Box pt={6}>
+                <img 
+                  src={faceImage} 
+                  alt="Logo" 
+                  className={classes.image}
+                  style={{ borderRadius: 80 }}/>
+              </Box>
+              <h3 className={classes.name}>Ning Chen</h3>
+              <h1 className={classes.skill}>Full Stack Web Developer</h1>
+              <Divider variant="middle"/>
+              <h2 className={classes.skill}>HTML/CSS | JavaScript | React-Redux | Nodejs | SQL</h2>
+              <Box pb={10}>
+                <List>
+                  <Button>
+                    <GitHubIcon fontSize="large"/>
+                  </Button>
+                  <Button>
+                    <LinkedInIcon fontSize="large"/>
+                  </Button>
+                  <Button>
+                    <FacebookIcon fontSize="large"/>
+                  </Button>
+                  <Button>
+                    <YouTubeIcon fonySize="large"/>
+                  </Button>            
+                </List>
+              </Box>
+            </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <Box pl="30%" pr="30%">
-              <Paper elevation={0} className={classes.paperBackground}>
-                <Box pt="10%" pb="10%" >
-                  <h1>Hello</h1>
-                </Box>
-              </Paper>
-            </Box>
-          </Grid>
-        </Grid>
+        </Paper>
       </Box>
     </div>
   )

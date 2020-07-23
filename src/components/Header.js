@@ -40,9 +40,12 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    background: '#12c2e9',
-    background: '-webkit-linear-gradient(to right, #12c2e9, #c471ed, #f64f59)',
-    background: 'linear-gradient(to right, #12c2e9, #c471ed, #f64f59)'
+    // background: '#12c2e9',
+    // background: '-webkit-linear-gradient(to right, #12c2e9, #c471ed, #f64f59)',
+    // background: 'linear-gradient(to right, #12c2e9, #c471ed, #f64f59)'
+    background: '#fffbd5',
+    background: '-webkit-linear-gradient(to left, #fffbd5, #b20a2c)',
+    background: 'linear-gradient(to left, #fffbd5, #b20a2c)'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -72,9 +75,11 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    fontFamily: 'Rowdies'
   },
   title: {
     display: 'flex',
+    fontFamily: 'Rowdies'
   },
   sectionDesktop: {
     display: 'none',
@@ -91,6 +96,9 @@ const useStyles = makeStyles((theme) => ({
   navButton: {
     textDecoration: 'none',
     color: theme.palette.text.primary
+  },
+  uniFont: {
+    fontFamily: 'Rowdies'
   }
 }));
 
@@ -154,10 +162,10 @@ function Header() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem className={classes.uniFont}>
         Contact
       </MenuItem>
-      <MenuItem>
+      <MenuItem className={classes.uniFont}>
         Share
       </MenuItem>
     </Menu>
@@ -190,7 +198,6 @@ function Header() {
           <div className={classes.sectionDesktop}>
 
             <Button 
-              color="inherit"
               className={classes.menuButton}>
               Contact
             </Button>
@@ -202,8 +209,6 @@ function Header() {
             >
               <ShareIcon/>
             </IconButton>
-
-          
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -211,7 +216,7 @@ function Header() {
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
-              color="inherit"
+              // color="inherit"
             >
               <MoreIcon />
             </IconButton>
@@ -234,19 +239,19 @@ function Header() {
         </div>
         <Divider />
         <List>
-          <ListItem button>
+          <ListItem button >
             <ListItemIcon>
               <PersonPinIcon/>
             </ListItemIcon>
-            <ListItemText primary="About Me" />
-            </ListItem>
+            <ListItemText primary="About Me"/>
+          </ListItem>
 
-            <ListItem button>
+          <ListItem button>
             <ListItemIcon>
               <LibraryBooksIcon/>
             </ListItemIcon>
             <ListItemText primary="Resume" />
-            </ListItem>
+          </ListItem>
         </List>
         <Divider />
         <List>
@@ -257,13 +262,12 @@ function Header() {
             <ListItemText primary="Projects" />
           </ListItem>
 
-          <ListItem button>
+          <ListItem button >
               <ListItemIcon>
                 <BookIcon/>
               </ListItemIcon>
               <ListItemText primary="Blog" />
             </ListItem>
-
         </List>
       </Drawer>
       {renderMobileMenu}
