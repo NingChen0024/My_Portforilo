@@ -4,19 +4,18 @@ import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
 import faceImage from '../ning.jpg'
-import List from '@material-ui/core/List';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import List from '@material-ui/core/List'
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import { Button } from '@material-ui/core'
-import GitHubIcon from '@material-ui/icons/GitHub';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import Divider from '@material-ui/core/Divider';
-
+import GitHubIcon from '@material-ui/icons/GitHub'
+import FacebookIcon from '@material-ui/icons/Facebook'
+import Divider from '@material-ui/core/Divider'
+import InstagramIcon from '@material-ui/icons/Instagram'
+import Footer from './Footer'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    // background: '#fffcdc'
     backgroundColor: '#FFFFFF'
   },
   paper: {
@@ -42,13 +41,16 @@ const useStyles = makeStyles((theme) => ({
   skill: {
     fontFamily: 'Rowdies',
   },
+  link: {
+    color: 'inherit'
+  }
 }));
 
 function Main() {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      <Box pt="15%" pl="6%" pr="6%" className={classes.center}>
+      <Box pt="15%" pl="6%" pr="6%" pb="8%" className={classes.center}>
         <Paper elevation={0} className={classes.paperBackground}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -63,26 +65,36 @@ function Main() {
               <h1 className={classes.skill}>Full Stack Web Developer</h1>
               <Divider variant="middle"/>
               <h2 className={classes.skill}>HTML/CSS | JavaScript | React-Redux | Nodejs | SQL</h2>
-              <Box pb={10}>
+              <Box pb={7}>
                 <List>
                   <Button>
-                    <GitHubIcon fontSize="large"/>
+                    <a href="https://github.com/NingChen0024" className={classes.link}>
+                      <GitHubIcon fontSize="large"/>
+                    </a>
                   </Button>
                   <Button>
-                    <LinkedInIcon fontSize="large"/>
+                    <a href="https://www.linkedin.com/in/ning-chen-00a7741a9/" className={classes.link}>
+                      <LinkedInIcon fontSize="large"/>
+                    </a>
                   </Button>
                   <Button>
-                    <FacebookIcon fontSize="large"/>
+                    <a href="https://www.facebook.com/ning.chen.775823" className={classes.link}>
+                      <FacebookIcon fontSize="large"/>
+                    </a>
                   </Button>
                   <Button>
-                    <YouTubeIcon fonySize="large"/>
+                    <a href="https://www.instagram.com/ning.chen.775823/" className={classes.link}>
+                      <InstagramIcon fontSize="large"/>
+                    </a>
                   </Button>            
                 </List>
+                <h3>nche0024@gmail.com</h3>
               </Box>
             </Grid>
           </Grid>
         </Paper>
       </Box>
+      <Footer/>
     </div>
   )
 }
